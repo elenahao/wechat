@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        // meta
+        block meta
+            include ./pagelets/head/meta.jade
+        // 标题
+        block title
+            title #{title}
+        block stylesheet
+            include ./pagelets/head/style.jade
+        block headscript
+    body
+        .container-fluid
+            block header
+                include ./pagelets/header.jade
+            .row.gm-main
+                block content
+        input(type="hidden", value="#{csrf}", id="csrfKey")
+        block footfunc
+            include ./pagelets/footfunc.jade

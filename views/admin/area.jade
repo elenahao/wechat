@@ -1,0 +1,13 @@
+extends ./base
+
+block append content
+    include ./pagelets/nav.jade
+
+    //- 一级页面 右侧
+    div.col-md-10.gm-right
+        //- 区域管理
+        include ./subpage/area.jade
+
+block append footfunc
+    script(src="#{adminStaticBase}/artDialog/artDialog.js?skin=default")
+    script(src="#{adminStaticBase}/admin/js/area/area.js")

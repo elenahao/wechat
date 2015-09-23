@@ -1,0 +1,24 @@
+div.gm-add-topic.m-hide-
+    h2
+        | 新增题集
+    form.form-inline
+        ul
+            li
+                label.gm-must
+                    | 题集名称
+                input.form-control.long(type="text" placeholder="经典老片")
+            li
+                label.gm-must
+                    | 题集文案
+                textarea.form-control.long(rows="5" placeholder="不容错过")
+            li
+                label.gm-must.col-md-2
+                    | 上传封面
+                input.form-control.long(type="text" placeholder="链接")
+            li
+                label
+                    | 所含题目
+                button.btn.btn-info(type="button")
+                    |  + 所含题目
+    button.btn.btn-success(type="button")
+        | 提交表单

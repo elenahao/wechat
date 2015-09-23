@@ -1,0 +1,13 @@
+mixin navItem(item)
+    a(href="#{item.href}") #{item.name}
+    
+.col-md-2.gm-left
+    h4 #{title}
+    ul.nav.nav-pills.nav-stacked
+        each item in sitenavs
+            if item.isActive
+                li.active(role="presentation")
+                    +navItem(item)
+            else
+                li(role="presentation")
+                    +navItem(item)

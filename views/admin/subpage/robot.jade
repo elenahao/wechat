@@ -1,0 +1,77 @@
+div.gm-robot.m-hide
+            div.gm-search-bar
+                div.col-xs-4
+                    input.form-control(type="text")
+                a.btn.btn-primary.btn-sm.active.gm-search(role="button")
+                    | 搜索
+                div.gm-user-data
+                    span
+                        | 玩家总数：1000
+                    span
+                        | 昨日玩家：1000
+                    span
+                        | 今日玩家：1000
+                    
+            div.gm-question-form
+                table.table.table-striped.gm-topic-table
+                    thead
+                        tr
+                            th
+                                | 排名
+                            th
+                                | 用户名
+                            th
+                                | 等级
+                            th
+                                | 对战次数
+                            th
+                                | 经验值
+                            th
+                                | 操作
+                            
+                    tbody
+                        tr
+                            td(scope="row")
+                                | 1
+                            td
+                                img.img-rounded(src="" alt="")
+                                | 黄月英
+                            td
+                                | 3
+                            td
+                                | 3
+                            td
+                                | 30000
+                            td
+                                a.btn.btn-sm.btn-edit(href="#")
+                                    | 编辑
+                                a.btn.btn-sm.btn-delete(href="#")
+                                    | 删除
+
+            nav
+                ul.pagination
+                    li.disabled
+                        a(href="#" aria-label="Previous")
+                            span(aria-hidden="true")
+                                | «
+                    li.active
+                        a(href="#")
+                            | 1
+                            span.sr-only
+                                | (current)
+                    li
+                        a(href="#")
+                            | 2
+                    li
+                        a(href="#")
+                            | 3
+                    li
+                        a(href="#")
+                            | 4
+                    li
+                        a(href="#")
+                            | 5
+                    li
+                        a(href="#" aria-label="Next")
+                            span(aria-hidden="true")
+                                | »

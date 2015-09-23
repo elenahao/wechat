@@ -1,0 +1,35 @@
+div.gm-question
+    div.gm-search-bar
+        div.col-xs-4
+            input.form-control(type="text")
+        a.btn.btn-primary.btn-sm.active.gm-search(role="button") 搜索
+        a.btn.btn-primary.btn-sm.active.gm-add(role="button",href="/admin/playset/edit") 新增
+    div.gm-question-form
+        table.table.table-striped.gm-topic-table
+            thead
+                tr
+                    th 题集名称
+                    th 文案
+                    th 题目数
+                    th 发布时间
+                    th 操作
+            tbody
+                each playset in playsets
+                    tr
+                        td(scope="row") #{playset.name}
+                        td #{playset.desc}
+                        td #{playset.questions.length}
+                        td #{playset.lastModTime}
+                        td
+                            a.btn.btn-sm.btn-edit(href="/admin/playset/edit/#{playset.pid}") 编辑
+                            a.btn.btn-sm.btn-delete(href="#",data-pid="#{playset.pid}") 删除
+
+    nav
+        ul.pagination
+            each page in pages
+                if page.isCurrent
+                    li.active
+                        a(href="#{page.link}") #{page.text}
+                else
+                    li
+                        a(href="#{page.link}") #{page.text}

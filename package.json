@@ -1,0 +1,44 @@
+{
+  "name": "bae-nodejs",
+  "version": "1.0.0",
+  "author": "bae",
+  "description": "The first bae nodejs app!",
+  "private": true,
+  "scripts": {
+    "dev": "sudo node-dev ./server.js",
+    "remote-dev": "sudo node-dev ./server.js remote",
+    "test": "mocha test/model",
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.8.1",
+    "compression": "^1.5.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.0.0",
+    "express": "~4.9.0",
+    "express-session": "^1.11.3",
+    "express-validator": "^2.15.1",
+    "jade": "~1.6.0",
+    "kue": "^0.9.4",
+    "lazy.js": "^0.4.0",
+    "lodash": "^3.10.0",
+    "log4js": "^0.6.22",
+    "lru-cache": "^2.6.5",
+    "lusca": "^1.3.0",
+    "multer": "^1.0.3",
+    "node-uuid": "^1.4.3",
+    "q": "^1.4.1",
+    "redis": "^0.12.1",
+    "request": "^2.60.0",
+    "require-dir": "^0.3.0",
+    "serve-favicon": "~2.1.3",
+    "shortid": "^2.2.2",
+    "valid-url": "^1.0.9",
+    "wechat": "git://github.com/node-webot/wechat.git",
+    "node-schedule": "*"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}

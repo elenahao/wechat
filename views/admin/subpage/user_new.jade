@@ -1,0 +1,171 @@
+div.gm-user
+    - var formURL = '/admin/api/user/oneToGroup/'
+    form#questTable(action=formURL,method="POST")
+        input(type="hidden",name="openid",id="openid")
+        input(type="hidden",name="gid",id="gid")
+        div.gm-search-bar
+            div.col-xs-4
+                input.form-control.qname(type="text", placeholder="用户昵称")
+            a.btn.btn-primary.btn-sm.active.gm-search(role="button") 搜索
+            a.btn.btn-primary.btn-sm.active.gm-refresh-info(role="button" href="/admin/api/user/getInfo") 刷新信息
+            a.btn.btn-primary.btn-sm.active.gm-refresh(role="button", href="/admin/api/user/refresh") 刷新列表
+        div.gm-question-form
+            table.table.table-striped.gm-topic-table
+                thead
+                    tr
+                        th
+                            | 是否订阅
+                        th
+                            | OPENID
+                        th
+                            | 昵称
+                        th
+                            | 性别
+                        th
+                            | 城市
+                        th
+                            | 国家
+                        th
+                            | 省份
+                        th
+                            | 语言
+                        th
+                            | 头像
+                        th
+                            | 用户关注时间
+                        th
+                            | 备注
+                        th
+                            | 组ID
+                        th
+                            | 移动到组
+                tbody
+                    each user in users
+                        tr
+                            td
+                                | #{user.subscribe==1 ? '已关注' : '未关注'}
+                            td(scope="row")
+                                | #{user.openid}
+                            td
+                                | #{user.nickname}
+                            td
+                                if user.sex == 1
+                                    | 男
+                                else if user.sex == 2
+                                    | 女
+                                else
+                                    | 未知
+                            td
+                                | #{user.city}
+                            td
+                                | #{user.country}
+                            td
+                                | #{user.province}
+                            td
+                                if user.language == 'zh_CN'
+                                    | 简体中文
+                                else
+                                    | #{user.language}
+                            td
+                                img.img-rounded(src="#{user.headimgurl}" alt="" width="30px" height="30px")
+                            td
+                                | #{user.subscribe_time}
+                            td
+                                | #{user.remark}
+                            td
+                                | #{user.groupid}
+                            td
+                                select.form-control.group-change(name="group", openid="#{user.openid}", required="required")
+                                    if user
+                                        each group in groups
+                                            if (user.groupid == group.id)
+                                                option(value="#{group.id}",selected="selected") #{group.name}
+                                            else
+                                                option(value="#{group.id}") #{group.name}
+                                    else
+                                        each group in groups
+                                            option(value="#{group.id}") #{group.name}
+
+    nav
+        ul.pagination
+            each page in pages
+                if page.isCurrent
+                    li.active
+                        a(href="#{page.link}") #{page.text}
+                else
+                    li
+                        a(href="#{page.link}") #{page.text}
+    //Derek
+    div.row.submit_row
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#sex(value="0" name="radio")
+                    | 性别
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#city(value="1" name="radio")
+                    | 城市
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#country(value="2" name="radio")
+                    | 省份
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#province(value="3" name="radio")
+                    | 国家
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#language(value="4" name="radio")
+                    | 组
+        div.col-xs-2
+            div.radio.submit_radio
+                label(for="sex")
+                    input(type="radio").input_sex#sex1(value="5" name="radio")
+                    | 是否关注
+        //div.col-xs-6
+        div.col-xs-12
+            div.col-md-12.submit_select.display
+                div.col-md-2
+                    select.form-control(name="level",required="required").display#select_sex
+                        option
+                            | 男
+                        option
+                            | 女
+                    select.form-control(name="level",required="required").display#select_city
+                        option
+                            | 朝阳
+                        option
+                            | 海淀
+                    select.form-control(name="level",required="required").display#select_country
+                        option
+                            | 北京
+                        option
+                            | 上海
+                    select.form-control(name="level",required="required").display#select_province
+                        option
+                            | 中国
+                        option
+                            | 美国
+                    select.form-control(name="level",required="required").display#select_group
+                        each group in groups
+                            option(value="#{group.id}") #{group.name}
+                    select.form-control(name="level",required="required").display#select_follow
+                        option
+                            | 是
+                        option
+                            | 否
+                div.col-md-2.col-md-offset-8
+            div.col-md-12.submit_select.display
+                div.col-md-2
+                    label 移动到组
+                    select.form-control(name="level",required="required")
+                        each group in groups
+                            option(value="#{group.id}") #{group.name}
+                div.col-md-2.col-md-offset-8
+                    button.btn.btn-primary.btn-block
+                        | 提交

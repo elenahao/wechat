@@ -1,0 +1,103 @@
+div.gm-add-question
+    - var subtitle = question ? '编辑题目' : '新增题目'
+    - var questionName = question ? question.name : ''
+    - var questionDesc = question ? question.desc : ''
+    - var formURL = question ? '/admin/api/question/edit/' + question.qid : '/admin/api/question/add/'
+    
+    mixin typeInput(type, _question)
+        - var res = 0;
+        - for (var i = 0; i < _question.type.length; i++) {
+            - if (_question.type[i] == type.id) {
+                - res = 1
+                - break
+            -}
+        - }
+        - if ( res == 1) {
+            label.type
+                input.mtype(type="checkbox", value="#{type.id}", name="type", checked="checked")
+                | #{type.name}
+        - } else {
+            label.type
+                input.mtype(type="checkbox", value="#{type.id}", name="type")
+                | #{type.name}
+        -}
+    
+    mixin showWrongAnswers(_question)
+        - for (var i = 1; i < _question.answers.length; i++) {
+            dt
+                input.form-control.asr(type="text",name="answers",required="required",value="#{_question.answers[i]}")
+        -}
+        
+    
+    h2 #{subtitle}
+    form.form-inline#questTable(action=formURL,method="POST")
+        ul
+            li
+                label.gm-must 电影名
+                input.form-control.long.qname(type="text",name="qname",placeholder="",required="required" value=questionName)
+            li
+                label.gm-must 题目描述
+                input.form-control.long.qdesc(type="text",name="qdesc",placeholder="",required="required" value=questionDesc)
+            li
+                label.gm-must 难度
+                select.form-control(name="level",required="required")
+                    if question
+                        each level in levels
+                            if (question.level == level.id)
+                                option(value="#{level.id}",selected="selected") #{level.name}
+                            else
+                                option(value="#{level.id}") #{level.name}
+                    else
+                        each level in levels
+                            option(value="#{level.id}") #{level.name}
+            li
+                label.gm-must.col-md-2 分类
+                div.gm-answer.col-md-6
+                    if question
+                        each type in movieType
+                            +typeInput(type, question)
+                    else
+                        each type in movieType
+                            label.type 
+                                input.mtype(type="checkbox", value="#{type.id}", name="type")
+                                | #{type.name}
+            li
+                label 国别
+                input.form-control.long(type="text",placeholder="",name="country",value="#{question ? question.country : ''}")
+            li
+                label 年份
+                select.form-control(name="year")
+                    each year in movieYear
+                        if (question && year == question.year)
+                            option(value="#{year}", selected="selected") #{year}
+                        else
+                            option(value="#{year}") #{year}
+            li
+                label.gm-must 上传视频
+                input.form-control.long.videoUrl(type="text",name="video",required="required",value="#{question ? question.video : ''}")
+            li
+                label 题干
+                input.form-control.long(type="text",name="question",value="#{question ? question.question : ''}")
+            li
+                label.gm-must.col-md-2 答案设置
+                div.gm-answer.col-md-6
+                    div.r-answer
+                        label.col-md-2 正确答案
+                        input.form-control.correct.col-md-6(type="text",name="correct",required="required",value="#{question ? question.answers[0] : ''}")
+                    div.w-answer
+                        label.col-md-2 错误答案
+                        dl.col-md-6.answers-area
+                            if question
+                                +showWrongAnswers(question)
+                            else
+                                dt
+                                    input.form-control.asr(type="text",name="answers",required="required")
+                                dt
+                                    input.form-control.asr(type="text",name="answers",required="required")
+                                dt
+                                    input.form-control.asr(type="text",name="answers",required="required")
+                                dt
+                                    input.form-control.asr(type="text",name="answers",required="required")
+                        button.btn.btn-info.btn-add(type="button") + 错误信息 
+            li
+                button.btn.btn-success.btn-submit(type="submit") 提交表单

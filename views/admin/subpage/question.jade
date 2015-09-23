@@ -1,0 +1,62 @@
+div.gm-topic
+    mixin showLevel(level, _levels)
+        - var name = ''
+        - for (var i = 0; i < _levels.length; i++) {
+            - if (level == _levels[i].id) {
+                - name =  _levels[i].name
+                - break;
+            - }
+        - }
+        td #{name}
+    
+    mixin showType(type, _types)
+        - var typeName = []
+        - for (var i = 0; i < _types.length; i++) {
+            - for (var j = 0; j < type.length; j++) {
+                - if (type[j] == _types[i].id) {
+                    - typeName.push(_types[i].name)
+                    - break;
+                - }
+            - }
+        - }
+        - typeName = typeName.toString()
+        td #{typeName}
+        
+    div.gm-search-bar
+        div.col-xs-4
+            input.form-control.qname(type="text")
+        a.btn.btn-primary.btn-sm.active.gm-search(role="button") 搜索
+        a.btn.btn-primary.btn-sm.active.gm-add(role="button", href="/admin/question/edit/") 新增
+    div.gm-topic-form
+        table.table.table-striped.gm-topic-table#questTable
+            thead
+                tr
+                    th 电影名
+                    th 描述
+                    th 所属分类
+                    th 年份
+                    th 难度
+                    th 发布时间
+                    th 操作
+            tbody
+                each question in questions
+                    tr
+                        td(scope="row") #{question.name}
+                        td #{question.desc}
+                        +showType(question.type, movieType)
+                        td #{question.year}
+                        +showLevel(question.level, levels)
+                        td #{question.lastModTime}
+                        td
+                            a.btn.btn-sm.btn-edit(href="/admin/question/edit/#{question.qid}",data-qid="#{question.qid}") 编辑
+                            a.btn.btn-sm.btn-delete(href="#",data-qid="#{question.qid}") 删除
+
+    nav
+        ul.pagination
+            each page in pages
+                if page.isCurrent
+                    li.active
+                        a(href="#{page.link}") #{page.text}
+                else
+                    li
+                        a(href="#{page.link}") #{page.text}

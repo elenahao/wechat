@@ -1,0 +1,86 @@
+div.gm-user
+    - var formURL = '/admin/api/user/oneToGroup/'
+    form#questTable(action=formURL,method="POST")
+        input(type="hidden",name="openid",id="openid")
+        input(type="hidden",name="gid",id="gid")
+        div.gm-search-bar
+            div.col-xs-4
+                input.form-control.uname(type="text", placeholder="用户昵称")
+            a.btn.btn-primary.btn-sm.active.gm-search(role="button") 搜索
+            a.btn.btn-primary.btn-sm.active.gm-refresh-info(role="button" href="/admin/api/user/getInfo") 刷新信息
+            a.btn.btn-primary.btn-sm.active.gm-refresh(role="button", href="/admin/api/user/refresh") 刷新列表
+        div.gm-question-form
+            table.table.table-striped.gm-topic-table
+                thead
+                    tr
+                        th
+                            | 是否订阅
+                        th
+                            | OPENID
+                        th
+                            | 昵称
+                        th
+                            | 性别
+                        th
+                            | 城市
+                        th
+                            | 国家
+                        th
+                            | 省份
+                        th
+                            | 头像
+                        th
+                            | 用户关注时间
+                        th
+                            | 组ID
+                        th
+                            | 移动到组
+                tbody
+                    each user in users
+                        tr
+                            td
+                                | #{user.subscribe==1 ? '已关注' : '未关注'}
+                            td(scope="row")
+                                | #{user.openid}
+                            td
+                                | #{user.nickname}
+                            td
+                                if user.sex == 1
+                                    | 男
+                                else if user.sex == 2
+                                    | 女
+                                else
+                                    | 未知
+                            td
+                                | #{user.city}
+                            td
+                                | #{user.country}
+                            td
+                                | #{user.province}
+                            td
+                                img.img-rounded(src="#{user.headimgurl}" alt="" width="30px" height="30px")
+                            td
+                                | #{user.subscribe_time}
+                            td
+                                | #{user.groupid}
+                            td
+                                select.form-control.group-change(name="group", openid="#{user.openid}", required="required")
+                                    if user
+                                        each group in groups
+                                            if (user.groupid == group.id)
+                                                option(value="#{group.id}",selected="selected") #{group.name}
+                                            else
+                                                option(value="#{group.id}") #{group.name}
+                                    else
+                                        each group in groups
+                                            option(value="#{group.id}") #{group.name}
+
+    nav
+        ul.pagination
+            each page in pages
+                if page.isCurrent
+                    li.active
+                        a(href="#{page.link}") #{page.text}
+                else
+                    li
+                        a(href="#{page.link}") #{page.text}

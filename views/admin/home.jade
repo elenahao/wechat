@@ -1,0 +1,24 @@
+extends ./base
+
+block append content
+    include ./pagelets/nav.jade
+
+    //- 一级页面 右侧
+    div.col-md-10.gm-right
+        //- 题目管理
+        include ./question.jade
+        //- //- 题目题集
+        //- include ./topic.jade
+        //- //- 用户管理
+        include ./user.jade
+        //- //- 机器人管理
+        //- include ./robot.jade
+        //- //- 成就管理
+        //- include ./achievement.jade
+
+    //- 二级页面 右侧
+    //- div.gm-sec-right.col-md-8
+        //- 新增题目
+        //- include ./addQuestion.jade
+        //- 新增题集
+        //- include ./addTopic.jade

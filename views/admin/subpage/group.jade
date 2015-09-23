@@ -1,0 +1,119 @@
+div.gm-user
+    - var formURL = '/admin/api/group/add/'
+    form#questTable(action=formURL,method="POST")
+        input(type="hidden",name="gname",id="gname")
+        input(type="hidden",name="gnickname",id="gnickname")
+        input(type="hidden",name="gid",id="gid")
+        div.gm-search-bar
+            div.col-xs-4
+                input.form-control.gname(type="text", placeholder="组名称")
+            a.btn.btn-primary.btn-sm.active.gm-search(role="button") 搜索
+            a.btn.btn-primary.btn-sm.active.gm-add(role="button") 新增
+            a.btn.btn-primary.btn-sm.active.gm-refresh(role="button", href="/admin/api/group/refresh") 刷新
+            a.btn.btn-primary.btn-sm.active.gm-synchronize(role="button", href="/admin/api/group/synchronize") 同步
+        div.gm-question-form
+            table.table.table-striped.gm-topic-table
+                thead
+                    tr
+                        th
+                            | ID
+                        th
+                            | 组名称
+                        th
+                            | 定时(wy:国家-省份-城市-性别-是否关注)
+                        th
+                            | 组人数
+                        th
+                            | 操作
+                tbody
+                    each group in groups
+                        tr
+                            td(scope="row")
+                                | #{group.id}
+                            td
+                                | #{group.name}
+                            td
+                                if group.schedual_user
+                                    |#{group.schedual_user}
+                                    a.btn.btn-sm.btn-warning(groupid="#{group.id}" groupname="#{group.name}" groupsu="#{group.schedual_user}")
+                                        | 编辑
+                                else
+                                    a.btn.btn-sm.btn-warning(groupid="#{group.id}" groupname="#{group.name}")
+                                        | 编辑
+                            td
+                                | #{group.count}
+                            td
+                                a.btn.btn-sm.btn-edit(groupid="#{group.id}" groupname="#{group.name}")
+                                    | 编辑
+                                a.btn.btn-sm.btn-delete(groupid="#{group.id}" groupname="#{group.name}")
+                                    | 删除
+    nav
+        ul.pagination
+            each page in pages
+                if page.isCurrent
+                    li.active
+                        a(href="#{page.link}") #{page.text}
+                else
+                    li
+                        a(href="#{page.link}") #{page.text}
+//div
+//    label按照地区：
+//    select.form-control#group_su
+//        option
+//            | 中国
+//        option
+//            | 美国
+//    select.form-control#group_su
+//        option
+//            | 北京
+//        option
+//            | 上海
+//    select.form-control#group_su
+//        option
+//            | 朝阳
+//        option
+//            | 海淀
+//    label按照性别：
+//
+//<label>按照性别：</label><radio id="group_su" value="男">男</radio><radio id="group_su" value="女"></radio><radio id="group_su" value="未知"></radio><br>
+//<label>按照关注事件：</label><input type="text" id="subscribe_start"/>-<input type="text" id="subscribe_end"/><br>
+div.col-xs-12.m-hide#x_div
+    div.col-xs-12
+        div.col-xs-3
+            label
+            | 按照地域
+        div.col-xs-9
+            div.col-xs-4
+                select.form-control.country-change(name="country")
+                    option(value="",selected="selected") -请选择-
+            div.col-xs-4
+                select.form-control
+                    option(value="",selected="selected") -请选择-
+            div.col-xs-4
+                select.form-control
+                    option(value="",selected="selected") -请选择-
+    div.col-xs-12
+        div.col-xs-3
+            | 按照性别
+        div.col-xs-9
+            div.col-xs-8
+                div.col-xs-4
+                    input(type="radio" name="sexId")
+                    | 男
+                div.col-xs-4
+                    input(type="radio" name="sexId")
+                    | 女
+                div.col-xs-4
+                    input(type="radio" name="sexId")
+                    | 不限
+            div.col-xs-4
+    div.col-xs-12
+        div.col-xs-3
+            | 按照关注时间
+        div.col-xs-9
+                div.col-xs-5
+                    input(typt="text" onClick="WdatePicker()")
+                div.col-xs-2
+                    |-至-
+                div.col-xs-5
+                    input(typt="text" onClick="WdatePicker()")

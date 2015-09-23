@@ -1,0 +1,34 @@
+div.gm-user
+    - var formURL = '/admin/api/area/getProvinces/'
+    form#questTable(action=formURL,method="POST")
+        input(type="hidden",name="country",id="country")
+        div.gm-search-bar
+            a.btn.btn-primary.btn-sm.active.gm-refresh(role="button") 新增
+        div.gm-question-form
+            table.table.table-striped.gm-topic-table
+                thead
+                    tr
+                        th
+                            | 国家
+                        th
+                            | 省份
+                        th
+                            | 城市
+                        th
+                            | 操作
+                tbody
+                    tr
+                        td
+                            select.form-control.country-change(name="countries")
+                                option(value="",selected="selected") --请选择--
+                                each country in countries
+                                    option(value="#{country.id}") #{country.name}
+                        td
+                            select.form-control.province-change(name="province")
+                                option(value="",selected="selected") --请选择--
+                        td
+                            select.form-control.city-change(name="city")
+                                option(value="",selected="selected") --请选择--
+                        td
+                            a.btn.btn-sm.btn-edit()
+                                | 删除

@@ -57,9 +57,11 @@ function scan() {
                 }
 
                 if (cursor == 0) {
-                    if(i >= 2){
-                        return dfd.promise;
+                    console.log('cursor==0');
+                    if(i == 2){
+                        console.log('i='+i);
                     }else{
+                        console.log('scan');
                         i++;
                         _scan();
                     }
@@ -70,7 +72,7 @@ function scan() {
         )
     }
     _scan();
-    
+
     return dfd.promise;
 }
 

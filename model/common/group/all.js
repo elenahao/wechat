@@ -57,16 +57,19 @@ function scan() {
                 }
 
                 if (cursor == 0) {
-                    i++;
-                    _scan();
-                    //dfd.resolve(groups);
+                    if(i >= 2){
+                        return dfd.promise;
+                    }else{
+                        i++;
+                        _scan();
+                    }
+                }else{
+                    console.log('微信端数据有误，支持超过100群组');
                 }
             }
         )
     }
     _scan();
-
-    return dfd.promise;
 }
 
 module.exports = _getAllGroup;

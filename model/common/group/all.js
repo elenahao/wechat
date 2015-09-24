@@ -61,6 +61,7 @@ function scan() {
                     console.log('cursor==0');
                     if(i == 2){
                         console.log('i='+i);
+                        dfd.resolve(groups);
                     }else{
                         console.log('scan');
                         i++;

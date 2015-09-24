@@ -39,9 +39,10 @@ var _getAllGroup = function() {
 function scan() {
     var dfd = Q.defer();
     var cursor = '0';
-    groups = {};
+    var i = 0;
     function _scan(){
-        redis.client.scanStream(
+        var node = 'client' + i;
+        redis[node].scan(
             cursor,
             'match', 'group:*',
             'count', '100',//目前微信支持最多建100个群组，实际不涉及递归，但这样写方便日后100这个数值扩展时兼容
@@ -56,12 +57,12 @@ function scan() {
                 }
 
                 if (cursor == 0) {
-                    dfd.resolve(groups);
-                } else {
+                    i++;
                     _scan();
+                    //dfd.resolve(groups);
                 }
             }
-        );
+        )
     }
     _scan();
 

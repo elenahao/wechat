@@ -18,7 +18,10 @@ var _redis = {
     zrevrange : require('./redis/zrevrange'),
     exists : require('./redis/exists'),
     del: require('./redis/del'),
-    lrange: require('./redis/lrange')
+    lrange: require('./redis/lrange'),
+    client0: require('./redis/client0'),
+    client1: require('./redis/client1'),
+    client2: require('./redis/client2')
 }
 
 if (global.devMode) {

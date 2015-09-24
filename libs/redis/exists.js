@@ -14,14 +14,18 @@ function exists(key) {
     var dfd = Q.defer();
     console.log('exists');
     if (key) {
+        console.log('key');
         client.exists(key, function(err, replay) {
             if(err){
+                console.log('err');
                 dfd.reject(err);
             }else{
+                console.log('replay');
                 dfd.resolve(replay);
             }
         });
     } else {
+        console.log('no key');
         dfd.reject({
             err: 'param error'
         });

@@ -17,7 +17,7 @@ function exists(key) {
         console.log('key');
         client.exists(key, function(err, replay) {
             if(err){
-                console.log('err');
+                console.log(err+'--'+replay);
                 dfd.reject(err);
             }else{
                 console.log('replay');

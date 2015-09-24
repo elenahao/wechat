@@ -18,7 +18,7 @@ console.log(APPSECRET);
 
 var _getAccessToken = function() {
     var dfd = Q.defer();
-
+    console.log('11111111111');
    redis.exists('access_token')
        .then(function resolve(res) {
            console.log('res'+res);

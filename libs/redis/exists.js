@@ -12,7 +12,7 @@ var client = require("./client");
  */
 function exists(key) {
     var dfd = Q.defer();
-
+    console.log('exists');
     if (key) {
         client.exists(key, function(err, replay) {
             if(err){

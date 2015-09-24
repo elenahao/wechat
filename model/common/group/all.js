@@ -70,6 +70,8 @@ function scan() {
         )
     }
     _scan();
+    
+    return dfd.promise;
 }
 
 module.exports = _getAllGroup;

@@ -35,7 +35,8 @@
     "shortid": "^2.2.2",
     "valid-url": "^1.0.9",
     "wechat": "git://github.com/node-webot/wechat.git",
-    "node-schedule": "*"
+    "node-schedule": "*",
+    "ioredis": "~1.9.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",

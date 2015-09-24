@@ -41,7 +41,7 @@ function scan() {
     var cursor = '0';
     groups = {};
     function _scan(){
-        redis.client.scan(
+        redis.client.scanStream(
             cursor,
             'match', 'group:*',
             'count', '100',//目前微信支持最多建100个群组，实际不涉及递归，但这样写方便日后100这个数值扩展时兼容

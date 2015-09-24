@@ -14,9 +14,9 @@ var _app = {
 }
 
 var _apptest = {
-    APPID: 'wx0c7c93d636ff9769',
-    SECRET: 'd4a38c7b7804febf8c33045005713191',
-    token: 'haoxueying123',
+    APPID: 'wx92cf60f7577e2d48',
+    SECRET: '6347543223aa409d36108565b51edd9a',
+    token: 'XPlatform_Client_GaoPeng20131104',
     URL: 'http://haoxueying.qiuxiansheng.com/wechat',
     OPENID: 'gh_be215938378a'
 }

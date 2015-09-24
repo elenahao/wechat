@@ -15,6 +15,7 @@ var _getAllGroup = function() {
         dfd.resolve(JSON.parse(allgs));
     },function err(err){
         scan().then(function(res){
+            console.log('res=',res);
             var g = [];
             Lazy(res).each(function(value,key){
                 g.push(value);

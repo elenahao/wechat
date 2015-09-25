@@ -21,7 +21,7 @@ app.get('/admin/api/refresh/user', function(req, res) {
             console.log(res.access_token);
             ACCESS_TOKEN = res.access_token;
             //var next_openid = 'o0aT-dzYotN0c1QJeejYOGStmKFQ';
-            var next_openid = 'o0aT-d4n3BTE2MGULOaluCuqNOb8';
+            var next_openid = 'o0aT-d1NFz15apfqpz-xQWTWySUs';
             getUser(ACCESS_TOKEN, next_openid);
             //request({
             //    url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN,

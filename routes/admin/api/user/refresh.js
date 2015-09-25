@@ -59,7 +59,7 @@ app.get('/admin/api/refresh/user', function(req, res) {
     },function reject(err){
         res.status(400).send(JSON.stringify({
             ret: -4,
-            msg: errors
+            msg: err
         }));
     })
     //res.redirect('/admin/user');
@@ -67,26 +67,24 @@ app.get('/admin/api/refresh/user', function(req, res) {
 
 var getUser = function(ACCESS_TOKEN, next_openid) {
     var dfd = Q.defer();
-    console.log(ACCESS_TOKEN);
-    console.log(next_openid);
+    console.log('access_token='+ACCESS_TOKEN);
+    console.log('next_openid='+next_openid);
     request({
         url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN+'&next_openid='+next_openid,
         method: 'GET'
     }, function(err, res, body){
         var _body = JSON.parse(body);
-        console.log('_body='+_body);
-        var total = _body.total;
+        //var total = _body.total;
         var count = _body.count;
         var data = _body.data;
-        console.log('data='+data);
         var openids = data.openid;
         var next_openid = _body.next_openid;
         for(var i = 0; i< openids.length; i++){
-            var openid = openids[i];
+            //var openid = openids[i];
             var options = {
-                openid : openid
+                openid : openids[i]
             }
-            redis.hmset('user:'+openid, options)
+            redis.hmset('user:'+openids[i], options)
                 .then(function resolve(res) {
                     //console.log('is set ok:', res);
                 }, function reject(err) {
@@ -101,8 +99,8 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
                 method: 'GET'
             }, function(err, res, body) {
                 var _body = JSON.parse(body);
-                var total = _body.total;
-                var count = _body.count;
+                //var total = _body.total;
+                //var count = _body.count;
                 var data = _body.data;
                 var openids = data.openid;
                 var next_openid = _body.next_openid;

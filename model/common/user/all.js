@@ -43,7 +43,7 @@ function scan() {
         redis.client.scan(
             cursor,
             'match', 'user:*',
-            'count', '1000',
+            'count', '10000',
             function(err, res) {
                 cursor = res[0];
                 if(res[1].length > 0){

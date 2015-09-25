@@ -57,7 +57,7 @@ function scan(ACCESS_TOKEN) {
                                     openid: uid.split(':')[1],
                                     lang: "zh-CN"
                                 }
-                                console.log('push in');
+                                //console.log('push in');
                                 user_list.push(_data);
                             }
                         });

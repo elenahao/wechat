@@ -50,7 +50,7 @@ function scan(ACCESS_TOKEN) {
                     //console.log(res[1]);
                     Lazy(res[1]).each(function(uid){
                         //console.log('uid='+uid);
-                        redis.hmget(uid, 'groupid', function(err, res){
+                        redis.client.hmget(uid, 'groupid', function(err, res){
                             console.log('err='+err+';res='+res);
                             if(res){
                                 var _data = {

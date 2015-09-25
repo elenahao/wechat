@@ -39,7 +39,7 @@ var _getAccessToken = function() {
                //console.log('is exists ok:', err);
                //请求生成一个access_token 并存在redis中，设置过期时间为2小时
                var ACCESS_TOKEN = '';
-                console.log('request')
+               console.log('request');
                request({
                    url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+APPID+'&secret='+APPSECRET,
                    method: 'GET'

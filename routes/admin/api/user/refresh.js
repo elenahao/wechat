@@ -8,6 +8,7 @@ var Q = require('q');
 var Lazy = require('lazy.js');
 var _ = require('lodash');
 var request = require('request');
+var clone = require('safe-clone-deep');
 var redis = require(path.resolve(global.gpath.app.libs + '/redis'));
 var Token = require(path.resolve(global.gpath.app.model + '/common/token'));
 
@@ -73,7 +74,7 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
         url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN+'&next_openid='+next_openid,
         method: 'GET'
     }, function(err, res, body){
-        var _body = JSON.parse(body);
+        var _body = JSON.parse(clone(body));
         //var total = _body.total;
         var count = _body.count;
         var data = _body.data;
@@ -98,7 +99,7 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
                 url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN+'&next_openid='+next_openid,
                 method: 'GET'
             }, function(err, res, body) {
-                var _body = JSON.parse(body);
+                var _body = JSON.parse(clone(body));
                 //var total = _body.total;
                 //var count = _body.count;
                 var data = _body.data;

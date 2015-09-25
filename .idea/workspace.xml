@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d46f033-9b9a-4b85-bf03-756e1a8d2b30" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/admin/api/user/refresh.js" afterPath="$PROJECT_DIR$/routes/admin/api/user/refresh.js" />
     </list>
     <ignored path="wechat.iws" />
@@ -33,11 +34,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="refresh.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="refresh.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/admin/api/user/refresh.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75">
-              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+            <state vertical-scroll-proportion="-50.666668">
+              <caret line="101" column="50" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6086956">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -83,16 +94,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/redis/client1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="client2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/redis/client2.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -131,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/model/common/token/getAccessToken.js" />
         <option value="$PROJECT_DIR$/libs/redis/exists.js" />
         <option value="$PROJECT_DIR$/config/weconfig.js" />
@@ -142,6 +142,7 @@
         <option value="$PROJECT_DIR$/libs/redis.js" />
         <option value="$PROJECT_DIR$/model/common/group/all.js" />
         <option value="$PROJECT_DIR$/routes/admin/api/user/refresh.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -437,14 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2391304">
-          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/gpath.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -647,8 +640,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin/api/user/refresh.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+        <state vertical-scroll-proportion="-50.666668">
+          <caret line="101" column="50" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6086956">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
           <folding />
         </state>
       </provider>

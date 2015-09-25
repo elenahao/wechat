@@ -52,7 +52,7 @@ function scan(ACCESS_TOKEN) {
                         //console.log('uid='+uid);
                         redis.client.hmget(uid, 'groupid', function(err, res){
                             //console.log('err='+err+';res='+res);
-                            if(!res){
+                            if(res == ''){
                                 var _data = {
                                     openid: uid.split(':')[1],
                                     lang: "zh-CN"
@@ -61,7 +61,7 @@ function scan(ACCESS_TOKEN) {
                                 user_list.push(_data);
                             }
                         });
-                        console.log(user_list.length);
+                        //console.log(user_list.length);
                         if(user_list.length == 100){
                             console.log('length=100');
                             console.log('ACCESS_TOKEN='+ACCESS_TOKEN);

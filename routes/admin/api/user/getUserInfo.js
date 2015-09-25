@@ -57,10 +57,13 @@ function scan(ACCESS_TOKEN) {
                                     openid: uid.split(':')[1],
                                     lang: "zh-CN"
                                 }
+                                console.log('push in');
                                 user_list.push(_data);
                             }
                         });
+                        console.log(user_list.length);
                         if(user_list.length == 100){
+                            console.log('length=100');
                             console.log('ACCESS_TOKEN='+ACCESS_TOKEN);
                             //var url = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+ACCESS_TOKEN+'&user_list='+JSON.stringify(user_list);
                             //console.log(url);

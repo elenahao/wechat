@@ -59,41 +59,41 @@ function scan(ACCESS_TOKEN) {
                                 }
                                 //console.log('push in');
                                 user_list.push(_data);
+                                console.log(user_list.length);
+                                if(user_list.length == 100){
+                                    console.log('length=100');
+                                    console.log('ACCESS_TOKEN='+ACCESS_TOKEN);
+                                    //var url = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+ACCESS_TOKEN+'&user_list='+JSON.stringify(user_list);
+                                    //console.log(url);
+                                    request({
+                                        url: 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+ACCESS_TOKEN,//+'&user_list='+JSON.stringify({user_list: user_list}),
+                                        body: JSON.stringify(clone({user_list: user_list})),
+                                        method: 'POST'
+                                    }, function(err, res, body) {
+                                        if(err) console.log(err);
+                                        //console.log('======'+body);
+                                        if (res.statusCode === 200) {
+                                            //console.log('success');
+                                            //存入redis
+                                            var _body = JSON.parse(clone(body));
+                                            //console.log(_body);
+                                            var user_info_list = _body.user_info_list;
+                                            for(var i = 0; i< user_info_list.length; i++){
+                                                var options = user_info_list[i];
+                                                var openid = options.openid;
+                                                redis.hmset('user:'+openid, options)
+                                                    .then(function resolve(res) {
+                                                        //console.log('is set ok:', res);
+                                                    }, function reject(err) {
+                                                        dfd.reject(err);
+                                                    })
+                                            }
+                                        }
+                                    });
+                                    user_list = new Array();
+                                }
                             }
                         });
-                        console.log(user_list.length);
-                        if(user_list.length == 100){
-                            console.log('length=100');
-                            console.log('ACCESS_TOKEN='+ACCESS_TOKEN);
-                            //var url = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+ACCESS_TOKEN+'&user_list='+JSON.stringify(user_list);
-                            //console.log(url);
-                            request({
-                                url: 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token='+ACCESS_TOKEN,//+'&user_list='+JSON.stringify({user_list: user_list}),
-                                body: JSON.stringify(clone({user_list: user_list})),
-                                method: 'POST'
-                            }, function(err, res, body) {
-                                if(err) console.log(err);
-                                //console.log('======'+body);
-                                if (res.statusCode === 200) {
-                                    //console.log('success');
-                                    //存入redis
-                                    var _body = JSON.parse(clone(body));
-                                    //console.log(_body);
-                                    var user_info_list = _body.user_info_list;
-                                    for(var i = 0; i< user_info_list.length; i++){
-                                        var options = user_info_list[i];
-                                        var openid = options.openid;
-                                        redis.hmset('user:'+openid, options)
-                                            .then(function resolve(res) {
-                                                //console.log('is set ok:', res);
-                                            }, function reject(err) {
-                                                dfd.reject(err);
-                                            })
-                                    }
-                                }
-                            });
-                            user_list = new Array();
-                        }
                     });
                 }
                 if (cursor == 0) {

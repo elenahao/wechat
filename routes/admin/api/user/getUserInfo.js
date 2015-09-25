@@ -75,7 +75,7 @@ function scan(ACCESS_TOKEN) {
                                         if (res.statusCode === 200) {
                                             //console.log('success');
                                             //存入redis
-                                            var _body = JSON.parse(clone(body));
+                                            var _body = JSON.parse(body);
                                             //console.log(_body);
                                             var user_info_list = _body.user_info_list;
                                             if(user_info_list){
@@ -89,6 +89,7 @@ function scan(ACCESS_TOKEN) {
                                                             dfd.reject(err);
                                                         })
                                                 }
+                                                console.log('100 hmset ok...');
                                             }else{
                                                 console.log(_body);
                                             }

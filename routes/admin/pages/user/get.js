@@ -8,6 +8,7 @@ var path = require('path');
 var Q = require('q');
 var request = require('request');
 var Lazy = require('lazy.js');
+var clone = require('safe-clone-deep');
 var _ = require('lodash');
 
 var calPage = require(path.resolve(global.gpath.app.libs + '/tools/pagecal'));
@@ -54,9 +55,9 @@ app.get(['/admin/user'],
             url: 'http://127.0.0.1:18081/admin/api/user/?start=' + _start + '&count=' + _count,
             method: 'GET'
         }, function(err, res, body) {
-            console.log('body='+body);
+            //console.log('body='+body);
             if (res.statusCode === 200) {
-                var _data = JSON.parse(body);
+                var _data = JSON.parse(clone(body));
                 if (_data.ret == 0) {
                     //获取组信息
                     console.log('rendering ...');

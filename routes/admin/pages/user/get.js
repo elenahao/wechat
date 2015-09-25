@@ -22,7 +22,7 @@ app.get(['/admin/user'],
         console.log("admin user...");
 
         function render(data) {
-            console.log('data='+JSON.stringify(data));
+            //console.log('data='+JSON.stringify(data));
             var _pageLinks = [];
             if (data.page > 1) {
                 Lazy(calPage(data.now, data.page, 10)).each(function(value, index) {
@@ -54,7 +54,7 @@ app.get(['/admin/user'],
             url: 'http://127.0.0.1:18081/admin/api/user/?start=' + _start + '&count=' + _count,
             method: 'GET'
         }, function(err, res, body) {
-            console.log(body);
+            //console.log(body);
             if (res.statusCode === 200) {
                 var _data = JSON.parse(body);
                 if (_data.ret == 0) {

@@ -21,7 +21,7 @@ app.get('/admin/api/user/',
         var _now = 0;
         var _us = [];
         User.all().then(function done(users) {
-            console.log('user='+users);
+            //console.log('user='+users);
             _pages = Math.ceil(users.length / _count);
             _now = Math.floor(_start / _count) + 1;
             for (var i = _start; i < _end; i++) {
@@ -39,7 +39,7 @@ app.get('/admin/api/user/',
             }));
         })
         .then(function done(groups) {
-            console.log('groups='+groups);
+            //console.log('groups='+groups);
             res.status(200).send(JSON.stringify({
                 ret: 0,
                 data: {

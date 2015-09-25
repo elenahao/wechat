@@ -47,7 +47,7 @@ function scan() {
             function(err, res) {
                 cursor = res[0];
                 if(res[1].length > 0){
-                    console.log(res[1]);
+                    //console.log(res[1]);
                     Lazy(res[1]).each(function(uid){
                         users[uid] = uid.split(':')[1];
                     });

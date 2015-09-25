@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d46f033-9b9a-4b85-bf03-756e1a8d2b30" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/common/user/all.js" afterPath="$PROJECT_DIR$/model/common/user/all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/admin/api/user/refresh.js" afterPath="$PROJECT_DIR$/routes/admin/api/user/refresh.js" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/model/common/user/all.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.44041452">
-              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -925,7 +924,7 @@
     <entry file="file://$PROJECT_DIR$/model/common/user/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44041452">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
           <folding />
         </state>
       </provider>

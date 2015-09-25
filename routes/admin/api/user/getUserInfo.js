@@ -51,8 +51,8 @@ function scan(ACCESS_TOKEN) {
                     Lazy(res[1]).each(function(uid){
                         //console.log('uid='+uid);
                         redis.client.hmget(uid, 'groupid', function(err, res){
-                            console.log('err='+err+';res='+res);
-                            if(res){
+                            //console.log('err='+err+';res='+res);
+                            if(!res){
                                 var _data = {
                                     openid: uid.split(':')[1],
                                     lang: "zh-CN"

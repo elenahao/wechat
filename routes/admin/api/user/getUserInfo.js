@@ -78,15 +78,19 @@ function scan(ACCESS_TOKEN) {
                                             var _body = JSON.parse(clone(body));
                                             //console.log(_body);
                                             var user_info_list = _body.user_info_list;
-                                            for(var i = 0; i< user_info_list.length; i++){
-                                                var options = user_info_list[i];
-                                                var openid = options.openid;
-                                                redis.hmset('user:'+openid, options)
-                                                    .then(function resolve(res) {
-                                                        //console.log('is set ok:', res);
-                                                    }, function reject(err) {
-                                                        dfd.reject(err);
-                                                    })
+                                            if(user_info_list){
+                                                for(var i = 0; i< user_info_list.length; i++){
+                                                    var options = user_info_list[i];
+                                                    var openid = options.openid;
+                                                    redis.hmset('user:'+openid, options)
+                                                        .then(function resolve(res) {
+                                                            //console.log('is set ok:', res);
+                                                        }, function reject(err) {
+                                                            dfd.reject(err);
+                                                        })
+                                                }
+                                            }else{
+                                                console.log(_body);
                                             }
                                         }
                                     });

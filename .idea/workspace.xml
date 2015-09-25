@@ -66,8 +66,8 @@
       <file leaf-file-name="getUserInfo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/admin/api/user/getUserInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57608694">
-              <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.67391306">
+              <caret line="87" column="77" selection-start-line="87" selection-start-column="77" selection-end-line="87" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -998,8 +998,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin/api/user/getUserInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57608694">
-          <caret line="62" column="60" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.67391306">
+          <caret line="87" column="77" selection-start-line="87" selection-start-column="77" selection-end-line="87" selection-end-column="77" />
           <folding />
         </state>
       </provider>

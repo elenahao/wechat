@@ -16,12 +16,13 @@ var _getAllUser = function() {
     },function err(err){
         scan().then(function(res){
             var u = [];
-            Lazy(res).each(function(value,key){
+            Lazy(res).each(function(value, key){
                 u.push(value);
             });
             if(Lazy(u).isEmpty()){
                 dfd.resolve([]);
             }
+            console.log('user.length='+ u.length);
             getUsers(u).then(function done(us){
                 redis.set('allus', JSON.stringify(us));
                 //redis.client.expire('allus', 20);
@@ -40,6 +41,7 @@ function scan() {
     var cursor = '0';
     users = {};
     function _scan(){
+        console.log('scan start ...');
         redis.client.scan(
             cursor,
             'match', 'user:*',

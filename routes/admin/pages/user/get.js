@@ -55,14 +55,14 @@ app.get(['/admin/user'],
             method: 'GET'
         }, function(err, res, body) {
             console.log('body='+body);
-            //if (res.statusCode === 200) {
+            if (res.statusCode === 200) {
                 var _data = JSON.parse(body);
                 if (_data.ret == 0) {
                     //获取组信息
                     console.log('rendering ...');
                     render(_data.data);
                 }
-            //}
+            }
         });
     });
 

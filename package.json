@@ -37,8 +37,7 @@
     "wechat": "git://github.com/node-webot/wechat.git",
     "node-schedule": "*",
     "ioredis": "~1.9.0",
-    "safe-clone-deep": "~1.1.2",
-    "buffer": "~3.5.0"
+    "safe-clone-deep": "~1.1.2"
   },
   "devDependencies": {
     "chai": "^3.2.0",

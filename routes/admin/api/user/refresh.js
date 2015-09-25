@@ -76,6 +76,7 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
     }, function(err, res, body){
         var _body = JSON.parse(clone(body));
         //var total = _body.total;
+        console.log(JSON.parse(clone(body)));
         var count = _body.count;
         var data = _body.data;
         var openids = data.openid;

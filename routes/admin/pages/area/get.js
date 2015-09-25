@@ -31,7 +31,7 @@ app.get(['/admin/area'],
         } // end of render
 
         request({
-            url: 'http://127.0.0.1/admin/api/area/',
+            url: 'http://127.0.0.1:18081/admin/api/area/',
             method: 'GET'
         }, function(err, res, body) {
             if (res.statusCode === 200) {

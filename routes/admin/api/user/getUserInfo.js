@@ -70,7 +70,10 @@ function scan(ACCESS_TOKEN) {
                                         body: JSON.stringify(clone({user_list: user_list})),
                                         method: 'POST'
                                     }, function(err, res, body) {
-                                        if(err) console.log(err);
+                                        if(err) {
+                                            console.log(err);
+
+                                        }
                                         //console.log('======'+body);
                                         if (res.statusCode === 200) {
                                             //console.log('success');
@@ -97,6 +100,8 @@ function scan(ACCESS_TOKEN) {
                                     });
                                     user_list = new Array();
                                 }
+                            }else{
+                                console.log('!!!!!!!res 不为空，res='+res);
                             }
                         });
                     });

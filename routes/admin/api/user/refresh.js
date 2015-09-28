@@ -77,23 +77,23 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
         var _body = JSON.parse(clone(body));
         //var total = _body.total;
         //console.log(JSON.parse(clone(body)));
-        var count = _body.count;
-        var data = _body.data;
-        var openids = data.openid;
+        //var count = _body.count;
+        //var data = _body.data;
+        //var openids = _body.data.openid;
         var next_openid = _body.next_openid;
-        for(var i = 0; i< openids.length; i++){
+        for(var i = 0; i< _body.data.openid.length; i++){
             //var openid = openids[i];
             var options = {
-                openid : openids[i]
+                openid : _body.data.openid[i]
             }
-            redis.hmset('user:'+openids[i], options)
+            redis.hmset('user:'+_body.data.openid[i], options)
                 .then(function resolve(res) {
                     //console.log('is set ok:', res);
                 }, function reject(err) {
                     dfd.reject(err);
                 })
         }
-        if(count != 10000){
+        if(_body.count != 10000){
             //结束,last time
             console.log('last time......................');
             request({

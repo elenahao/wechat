@@ -22,7 +22,7 @@ app.get('/admin/api/refresh/user', function(req, res) {
             console.log(res.access_token);
             ACCESS_TOKEN = res.access_token;
             //var next_openid = 'o0aT-dzYotN0c1QJeejYOGStmKFQ';
-            var next_openid = 'o0aT-d00fhXikLsiXobbrdIqwVsE';
+            var next_openid = 'o0aT-d5L5MRGSMJPIrYfuHNWvhGk';
             getUser(ACCESS_TOKEN, next_openid);
             //request({
             //    url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN,
@@ -74,7 +74,7 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
         url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN+'&next_openid='+next_openid,
         method: 'GET'
     }, function(err, res, body){
-        console.log(body);
+        //console.log(body);
         var _body = JSON.parse(clone(body));
         //var total = _body.total;
         //console.log(JSON.parse(clone(body)));

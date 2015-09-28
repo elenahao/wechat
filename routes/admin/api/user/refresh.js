@@ -22,40 +22,40 @@ app.get('/admin/api/refresh/user', function(req, res) {
             console.log(res.access_token);
             ACCESS_TOKEN = res.access_token;
             //var next_openid = 'o0aT-dzYotN0c1QJeejYOGStmKFQ';
-            //var next_openid = 'o0aT-d00fhXikLsiXobbrdIqwVsE';
-            //getUser(ACCESS_TOKEN, next_openid);
-            request({
-                url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN,
-                method: 'GET'
-            }, function(err, res, body) {
-                if(err) console.log(err);
-                //console.log('======'+body);
-                if (res.statusCode === 200) {
-                    console.log('success');
-                    //存入redis
-                    var _body = JSON.parse(clone(body));
-                    var total = _body.total;
-                    var count = _body.count;
-                    var data = _body.data;
-                    var openids = data.openid;
-                    var next_openid = _body.next_openid;
-                    for(var i = 0; i< openids.length; i++){
-                        var openid = openids[i];
-                        var options = {
-                            openid : openid
-                        }
-                        redis.hmset('user:'+openid, options)
-                            .then(function resolve(res) {
-                                //console.log('is set ok:', res);
-                            }, function reject(err) {
-                                dfd.reject(err);
-                            })
-                    }
-                    if(total != count){
-                        getUser(ACCESS_TOKEN, next_openid);
-                    }
-                }
-            });
+            var next_openid = 'o0aT-d00fhXikLsiXobbrdIqwVsE';
+            getUser(ACCESS_TOKEN, next_openid);
+            //request({
+            //    url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN,
+            //    method: 'GET'
+            //}, function(err, res, body) {
+            //    if(err) console.log(err);
+            //    //console.log('======'+body);
+            //    if (res.statusCode === 200) {
+            //        console.log('success');
+            //        //存入redis
+            //        var _body = JSON.parse(clone(body));
+            //        var total = _body.total;
+            //        var count = _body.count;
+            //        var data = _body.data;
+            //        var openids = data.openid;
+            //        var next_openid = _body.next_openid;
+            //        for(var i = 0; i< openids.length; i++){
+            //            var openid = openids[i];
+            //            var options = {
+            //                openid : openid
+            //            }
+            //            redis.hmset('user:'+openid, options)
+            //                .then(function resolve(res) {
+            //                    //console.log('is set ok:', res);
+            //                }, function reject(err) {
+            //                    dfd.reject(err);
+            //                })
+            //        }
+            //        if(total != count){
+            //            getUser(ACCESS_TOKEN, next_openid);
+            //        }
+            //    }
+            //});
         }
     },function reject(err){
         res.status(400).send(JSON.stringify({
@@ -74,6 +74,7 @@ var getUser = function(ACCESS_TOKEN, next_openid) {
         url: 'https://api.weixin.qq.com/cgi-bin/user/get?access_token='+ACCESS_TOKEN+'&next_openid='+next_openid,
         method: 'GET'
     }, function(err, res, body){
+        console.log(body);
         var _body = JSON.parse(clone(body));
         //var total = _body.total;
         //console.log(JSON.parse(clone(body)));

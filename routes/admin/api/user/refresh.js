@@ -29,11 +29,11 @@ app.get('/admin/api/refresh/user', function(req, res) {
                 method: 'GET'
             }, function(err, res, body) {
                 if(err) console.log(err);
-                console.log('======'+body);
+                //console.log('======'+body);
                 if (res.statusCode === 200) {
                     console.log('success');
                     //存入redis
-                    var _body = JSON.parse(body);
+                    var _body = JSON.parse(clone(body));
                     var total = _body.total;
                     var count = _body.count;
                     var data = _body.data;
@@ -46,7 +46,7 @@ app.get('/admin/api/refresh/user', function(req, res) {
                         }
                         redis.hmset('user:'+openid, options)
                             .then(function resolve(res) {
-                                console.log('is set ok:', res);
+                                //console.log('is set ok:', res);
                             }, function reject(err) {
                                 dfd.reject(err);
                             })

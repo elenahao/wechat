@@ -31,8 +31,4 @@ var client = new redis.Cluster([{
     }
 ]);
 
-var client1 = new redis('3000', '192.168.101.24');
-var client2 = new redis('3003', '192.168.101.25');
-var client3 = new redis('3004', '192.168.101.25');
-
 module.exports = client;
